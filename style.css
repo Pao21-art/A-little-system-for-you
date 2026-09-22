@@ -1,0 +1,1015 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: #050505;
+    color: #f5f5f5;
+    font-family: "Courier New", monospace;
+    overflow: hidden;
+}
+
+
+.screen {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #171717 0%,
+            #050505 55%,
+            #000000 100%
+        );
+
+    position: relative;
+}
+
+
+/* =========================
+   PANTALLA INICIAL
+========================= */
+
+.terminal {
+
+    width: min(700px, 90%);
+    min-height: 380px;
+
+    border: 1px solid #444;
+
+    padding: 45px;
+
+    background: rgba(5, 5, 5, 0.92);
+
+    box-shadow:
+        0 0 30px rgba(255, 255, 255, 0.05),
+        inset 0 0 30px rgba(255, 255, 255, 0.02);
+
+    position: relative;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.terminal::before {
+
+    content: "ERITCK.EXE";
+
+    position: absolute;
+
+    top: 12px;
+    left: 18px;
+
+    font-size: 11px;
+
+    color: #777;
+
+    letter-spacing: 2px;
+}
+
+
+.terminal p {
+
+    margin-bottom: 18px;
+
+    color: #d8d8d8;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+#line1 {
+    color: #888;
+}
+
+
+#line2 {
+    color: #fff;
+}
+
+
+#line3 {
+    color: #aaa;
+}
+
+
+#line4 {
+    color: #fff;
+    font-weight: bold;
+}
+
+
+/* =========================
+   BOTONES GENERALES
+========================= */
+
+button {
+
+    font-family: "Courier New", monospace;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+button:active {
+
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   BOTÓN INICIAR
+========================= */
+
+#startButton {
+
+    margin-top: 30px;
+
+    padding: 14px 24px;
+
+    background: transparent;
+
+    color: white;
+
+    border: 1px solid #777;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+}
+
+
+#startButton:hover {
+
+    background: white;
+
+    color: black;
+
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================
+   DIAGNÓSTICO
+========================= */
+
+.diagnostic {
+
+    display: none;
+
+    width: min(700px, 90%);
+
+    padding: 45px;
+
+    background: rgba(5, 5, 5, 0.95);
+
+    border: 1px solid #444;
+
+    box-shadow:
+        0 0 30px rgba(255, 255, 255, 0.05),
+        inset 0 0 30px rgba(255, 255, 255, 0.02);
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.diagnostic.active {
+
+    display: block;
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+.small-text {
+
+    color: #666;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 25px;
+}
+
+
+.diagnostic h1 {
+
+    font-size: 24px;
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 40px;
+}
+
+
+/* =========================
+   BARRAS
+========================= */
+
+.status {
+
+    margin-bottom: 28px;
+}
+
+
+.status span {
+
+    display: block;
+
+    font-size: 12px;
+
+    color: #aaa;
+
+    margin-bottom: 8px;
+}
+
+
+.bar {
+
+    width: 100%;
+
+    height: 8px;
+
+    background: #202020;
+
+    overflow: hidden;
+}
+
+
+.fill {
+
+    width: 0;
+
+    height: 100%;
+
+    background: #f5f5f5;
+}
+
+
+/* =========================
+   ANIMACIONES BARRAS
+========================= */
+
+.frustration {
+
+    animation:
+        loadFrustration 2.5s linear forwards;
+}
+
+
+.tired {
+
+    animation:
+        loadTired 2.5s linear 1.2s forwards;
+}
+
+
+.chaos {
+
+    animation:
+        loadChaos 2.5s linear 2.4s forwards;
+}
+
+
+@keyframes loadFrustration {
+
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 80%;
+    }
+}
+
+
+@keyframes loadTired {
+
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 90%;
+    }
+}
+
+
+@keyframes loadChaos {
+
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+
+/* =========================
+   MENSAJE DIAGNÓSTICO
+========================= */
+
+#diagnosticMessage {
+
+    margin-top: 40px;
+
+    color: #fff;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    opacity: 0;
+
+    transition:
+        opacity 1s ease;
+}
+
+
+#diagnosticMessage.show {
+
+    opacity: 1;
+}
+
+
+/* =========================
+   SYSTEM READY
+========================= */
+
+.ready-screen {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.ready-screen.active {
+
+    display: flex;
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+.terminal-box {
+
+    width: min(600px, 90%);
+
+    padding: 50px 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    background: rgba(0, 0, 0, 0.35);
+
+    box-shadow:
+        0 0 35px rgba(255, 255, 255, 0.05);
+}
+
+
+.system-label {
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.55;
+
+    margin-bottom: 25px;
+}
+
+
+.ready-screen h1 {
+
+    font-size: clamp(28px, 6vw, 52px);
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+
+.ready-text {
+
+    font-size: 16px;
+
+    opacity: 0.7;
+
+    margin-bottom: 40px;
+}
+
+
+#enterButton {
+
+    padding: 12px 35px;
+
+    background: transparent;
+
+    color: white;
+
+    border: 1px solid white;
+
+    letter-spacing: 3px;
+}
+
+
+#enterButton:hover {
+
+    background: white;
+
+    color: black;
+
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================
+   MENÚ PRINCIPAL
+========================= */
+
+.menu-screen {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.menu-screen.active {
+
+    display: flex;
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+.menu-box {
+
+    width: min(700px, 90%);
+
+    padding: 50px 40px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    background: rgba(0, 0, 0, 0.45);
+
+    box-shadow:
+        0 0 35px rgba(255, 255, 255, 0.05);
+}
+
+
+.menu-box h1 {
+
+    font-size: clamp(24px, 5vw, 40px);
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 45px;
+}
+
+
+.menu-options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.menu-button {
+
+    width: 100%;
+
+    padding: 18px 20px;
+
+    background: transparent;
+
+    color: #f5f5f5;
+
+    border: 1px solid #333;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+
+.menu-button span {
+
+    display: inline-block;
+
+    width: 45px;
+
+    color: #666;
+}
+
+
+.menu-button:hover {
+
+    background: #f5f5f5;
+
+    color: #050505;
+
+    border-color: #f5f5f5;
+
+    padding-left: 28px;
+}
+
+
+.menu-button:hover span {
+
+    color: #555;
+}
+
+
+/* =========================
+   SECCIONES
+========================= */
+
+.content-section {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.content-section.active {
+
+    display: flex;
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+.content-box {
+
+    width: min(700px, 90%);
+
+    min-height: 400px;
+
+    padding: 50px 40px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    background: rgba(0, 0, 0, 0.45);
+
+    box-shadow:
+        0 0 35px rgba(255, 255, 255, 0.05);
+}
+
+
+.content-box h1 {
+
+    font-size: clamp(28px, 6vw, 48px);
+
+    font-weight: normal;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 30px;
+}
+
+
+.content-box p {
+
+    color: #bbb;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   BOTÓN BACK
+========================= */
+
+.back-button {
+
+    margin-top: 50px;
+
+    padding: 11px 24px;
+
+    background: transparent;
+
+    color: white;
+
+    border: 1px solid #555;
+
+    letter-spacing: 2px;
+}
+
+
+.back-button:hover {
+
+    background: white;
+
+    color: black;
+
+    border-color: white;
+}
+
+
+/* =========================
+   MEMORY DATABASE
+========================= */
+
+.memories-box {
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+}
+
+
+.memory-intro {
+
+    margin-bottom: 30px;
+
+    color: #777 !important;
+
+    font-size: 13px !important;
+
+    letter-spacing: 1px;
+}
+
+
+.memory-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.memory-item {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 65px 1fr 30px;
+
+    align-items: center;
+
+    padding: 18px 16px;
+
+    background: transparent;
+
+    color: #f5f5f5;
+
+    border: 1px solid #292929;
+
+    text-align: left;
+
+    font-family: "Courier New", monospace;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+
+.memory-number {
+
+    color: #555;
+
+    font-size: 12px;
+}
+
+
+.memory-name {
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+
+.memory-arrow {
+
+    color: #555;
+
+    text-align: right;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.memory-item:hover {
+
+    background: #f5f5f5;
+
+    color: #050505;
+
+    border-color: #f5f5f5;
+
+    padding-left: 24px;
+}
+
+
+.memory-item:hover .memory-number {
+
+    color: #777;
+}
+
+
+.memory-item:hover .memory-arrow {
+
+    color: #050505;
+
+    transform: translateX(5px);
+}
+
+
+/* =========================
+   MEMORY INDIVIDUAL
+========================= */
+
+.memory-view-box {
+
+    width: min(700px, 90%);
+
+    max-height: 85vh;
+
+    min-height: 400px;
+
+    padding: 40px;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+#memoryTitle {
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   IMAGEN DE LA MEMORIA
+========================= */
+
+.memory-image {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 480px;
+
+    max-height: 320px;
+
+    height: auto;
+
+    object-fit: contain;
+
+    margin: 5px auto 30px auto;
+
+    border: 1px solid #333;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   TEXTO DE LA MEMORIA
+========================= */
+
+#memoryText {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    color: #bbb;
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    white-space: pre-line;
+}
+
+
+/* =========================
+   BOTÓN VOLVER
+========================= */
+
+#backToMemories {
+
+    margin-top: 45px;
+
+    align-self: flex-start;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .terminal,
+    .diagnostic {
+
+        padding: 30px;
+
+    }
+
+
+    .content-box {
+
+        width: 92%;
+
+        padding: 35px 25px;
+
+    }
+
+
+    .memory-view-box {
+
+        max-height: 88vh;
+
+        padding: 30px 22px;
+
+    }
+
+
+    .memory-image {
+
+        max-width: 100%;
+
+        max-height: 280px;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    #memoryText {
+
+        font-size: 14px;
+
+        line-height: 1.8;
+
+    }
+
+
+    .memory-item {
+
+        grid-template-columns: 55px 1fr 25px;
+
+        padding: 16px 12px;
+
+    }
+
+
+    .memory-name {
+
+        font-size: 12px;
+
+    }
+
+}/* =========================
+   FINAL SCREENS FIX
+========================= */
+
+#finalSection,
+#completeScreen {
+    background: #050505;
+    z-index: 20;
+}
+
+
+/* FINAL FILE */
+
+#finalSection .content-box {
+    position: relative;
+    z-index: 21;
+}
+
+
+/* SYSTEM COMPLETE */
+
+#completeScreen {
+    position: absolute;
+    inset: 0;
+    background: #050505;
+    z-index: 30;
+}
+
+
+#completeScreen .complete-box {
+    position: relative;
+    z-index: 31;
+}
+
+
+/* Evitar que elementos anteriores
+   se vean detrás del cierre */
+
+#finalSection.active,
+#completeScreen.active {
+    opacity: 1;
+}

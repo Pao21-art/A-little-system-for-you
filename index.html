@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A LITTLE SYSTEM FOR YOU</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="screen">
+
+        <!-- =========================
+             PANTALLA INICIAL
+        ========================== -->
+
+        <div class="terminal" id="terminal">
+
+            <p id="line1"></p>
+            <p id="line2"></p>
+            <p id="line3"></p>
+            <p id="line4"></p>
+
+            <button id="startButton">
+                INICIAR PROTOCOLO
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             PANTALLA DE DIAGNÓSTICO
+        ========================== -->
+
+        <div class="diagnostic" id="diagnostic">
+
+            <p class="small-text">
+                ERITCK / DIAGNOSTIC MODE
+            </p>
+
+            <h1>
+                ANÁLISIS DEL SISTEMA
+            </h1>
+
+
+            <div class="status">
+
+                <span>FRUSTRACIÓN</span>
+
+                <div class="bar">
+                    <div class="fill frustration"></div>
+                </div>
+
+            </div>
+
+
+            <div class="status">
+
+                <span>CANSANCIO</span>
+
+                <div class="bar">
+                    <div class="fill tired"></div>
+                </div>
+
+            </div>
+
+
+            <div class="status">
+
+                <span>GANAS DE MANDAR TODO A LA MIERDA</span>
+
+                <div class="bar">
+                    <div class="fill chaos"></div>
+                </div>
+
+            </div>
+
+
+            <p id="diagnosticMessage"></p>
+
+        </div>
+
+
+        <!-- =========================
+             SYSTEM READY
+        ========================== -->
+
+        <div id="readyScreen" class="ready-screen">
+
+            <div class="terminal-box">
+
+                <div class="system-label">
+                    SYSTEM STATUS
+                </div>
+
+                <h1>
+                    SYSTEM READY ✓
+                </h1>
+
+                <p class="ready-text">
+                    There's something here that I made just for you.
+                </p>
+
+                <button id="enterButton">
+                    ENTER
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MENÚ PRINCIPAL
+        ========================== -->
+
+        <div id="menuScreen" class="menu-screen">
+
+            <div class="menu-box">
+
+                <div class="system-label">
+                    PERSONAL SYSTEM
+                </div>
+
+                <h1>
+                    A LITTLE SYSTEM FOR YOU
+                </h1>
+
+                <div class="menu-options">
+
+                    <button class="menu-button" data-section="about">
+                        <span>01</span>
+                        ABOUT YOU
+                    </button>
+
+                    <button class="menu-button" data-section="memories">
+                        <span>02</span>
+                        MEMORIES
+                    </button>
+
+                    <button class="menu-button" data-section="message">
+                        <span>03</span>
+                        A MESSAGE
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ABOUT YOU
+        ========================== -->
+
+        <div id="aboutSection" class="content-section">
+
+            <div class="content-box">
+
+                <div class="system-label">
+                    01 / ABOUT YOU
+                </div>
+
+                <h1>
+                    ABOUT YOU
+                </h1>
+
+                <p>
+                    Bueno, si este pequeño sistema es para ti, creo que tiene sentido empezar por hablar un poquito de la persona que está detrás de todo esto. Eritck, hay muchas cosas que me gustan de ti, pero una de las que más admiro es la forma en la que sigues intentando cuando algo no sale como esperabas. Adoro verte aprender, mejorar, emocionarte cuando consigues algo que querías y también verte insistir cuando las cosas se ponen difíciles.
+
+                    Después de tantos años, podría decir que ya te conozco bastante, sin embargo aún sigo descubriendo muchas cosas nuevas de ti y creo que eso es de las cosas que más me gustan. Tus ideas, tus gustos, tus ocurrencias, tus días buenos y tus días no tan buenos, todo eso es parte de lo que hace que seas tú.
+
+                    Así que tranquilo mi vida, todo mejorará trust me. Te envio un abrazo inmenso desde la distancia.
+                </p>
+
+                <button class="back-button">
+                    ← BACK
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORIES
+        ========================== -->
+
+        <div id="memoriesSection" class="content-section">
+
+            <div class="content-box memories-box">
+
+                <div class="system-label">
+                    02 / MEMORIES
+                </div>
+
+                <h1>
+                    MEMORY DATABASE
+                </h1>
+
+                <p class="memory-intro">
+                    Some moments worth keeping.
+                </p>
+
+
+                <div class="memory-list">
+
+                    <button class="memory-item" data-memory="ride">
+
+                        <span class="memory-number">
+                            [001]
+                        </span>
+
+                        <span class="memory-name">
+                            FIRST VISIT
+                        </span>
+
+                        <span class="memory-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button class="memory-item" data-memory="gym">
+
+                        <span class="memory-number">
+                            [002]
+                        </span>
+
+                        <span class="memory-name">
+                            GYM NIGHTS
+                        </span>
+
+                        <span class="memory-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button class="memory-item" data-memory="photo">
+
+                        <span class="memory-number">
+                            [003]
+                        </span>
+
+                        <span class="memory-name">
+                            MOVIE NIGHT
+                        </span>
+
+                        <span class="memory-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button class="memory-item" data-memory="little">
+
+                        <span class="memory-number">
+                            [004]
+                        </span>
+
+                        <span class="memory-name">
+                            THE LETTER
+                        </span>
+
+                        <span class="memory-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <button class="back-button">
+                    ← BACK
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORY VIEW
+        ========================== -->
+
+        <div id="memoryView" class="content-section">
+
+            <div class="content-box memory-view-box">
+
+                <div class="system-label">
+                    MEMORY / <span id="memoryNumber"></span>
+                </div>
+
+                <h1 id="memoryTitle">
+                    MEMORY
+                </h1>
+
+                <img
+                    id="memoryImage"
+                    class="memory-image"
+                    src=""
+                    alt="Memory"
+                >
+
+                <p id="memoryText">
+                </p>
+
+                <button id="backToMemories" class="back-button">
+                    ← BACK TO MEMORIES
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             A MESSAGE
+        ========================== -->
+
+        <div id="messageSection" class="content-section">
+
+            <div class="content-box">
+
+                <div class="system-label">
+                    03 / A MESSAGE
+                </div>
+
+                <h1>
+                    A MESSAGE
+                </h1>
+
+                <p>
+                    Mi pequeño niño precioso, sé que hay días en los que simplemente no puedes con todo, y está bien.
+
+                    No voy a decirte que mañana todo estará bien, porque no sé si será mañana o pasado mañana, o dentro de unos días. Mientras pasa, solo quiero que sepas que estoy aquí para ti. En tus días buenos, en tus días malos, cuando tengas ganas de hablar y cuando no tengas ganas de decir absolutamente nada. Así que si ayer fue un día de mierda, déjalo ser eso: un día de mierda.
+
+                    Descansa y respira, pues mañana será otro día. Ánimo!
+                </p>
+
+                <button class="back-button">
+                    ← BACK
+                </button>
+
+                <button id="finalButton" class="back-button">
+                    OPEN FINAL FILE →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             FINAL FILE
+        ========================== -->
+
+        <div id="finalSection" class="content-section">
+
+            <div class="content-box final-box">
+
+                <div class="system-label">
+                    FINAL FILE / 001
+                </div>
+
+                <h1>
+                    ONE FINAL THING
+                </h1>
+
+                <p class="final-text">Si llegaste hasta aquí, entonces supongo que ya viste todo lo que quería decirte. Pero antes de finalizar, había una última cosa que quería dejar aquí.
+
+Eritck, sé perfectamente que las cosas no han sido fáciles, y probablemente hay días en los que sientes que todo el esfuerzo que haces no está dando los resultados que esperabas o que incluso no ha valido la pena. Pero yo sí veo ese esfuerzo.
+
+Nuevamente te digo: no tienes que tener todo resuelto ahora. Solo sigue.
+
+Y cuando vuelvas a dudar de ti, recuerda que hay alguien que está orgullosa de verte intentarlo.
+
+I believe in you.
+
+— Yiseth</p>
+
+                <button id="completeButton" class="back-button">
+                    COMPLETE SYSTEM →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             SYSTEM COMPLETE
+        ========================== -->
+
+        <div id="completeScreen" class="content-section">
+
+            <div class="complete-box">
+
+                <div class="system-label">
+                    SYSTEM STATUS
+                </div>
+
+                <h1>
+                    COMPLETE ✓
+                </h1>
+
+                <p>
+                    For the days when you need
+                    a little reminder.
+                </p>
+
+                <div class="complete-line"></div>
+
+                <span class="complete-signature">
+                    Made with love.
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
